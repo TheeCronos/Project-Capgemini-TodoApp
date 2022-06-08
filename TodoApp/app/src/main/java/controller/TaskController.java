@@ -138,7 +138,10 @@ public class TaskController {
 
         } catch (Exception ex) {
             throw new RuntimeException("Erro ao deletar a tarefa");
+        } finally {
+            ConnectionFactory.closeConnection(connection, statement, resultSet);
         }
-        return null;
+        //lista de tarefas que foi criada e carregada do banco de dados
+        return tasks;
     }
 }
