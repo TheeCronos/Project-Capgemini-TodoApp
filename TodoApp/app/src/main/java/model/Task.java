@@ -3,7 +3,7 @@ package model;
 import java.util.Calendar;
 
 public class Task {
-    
+
     private int id;
     private int idProject;
     private String name;
@@ -24,6 +24,10 @@ public class Task {
         this.deadline = deadline;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Task() {
+        this.createdAt = Calendar.getInstance();
     }
 
     public int getId() {
@@ -75,6 +79,7 @@ public class Task {
     }
 
     public Calendar getDeadline() {
+        deadline = Calendar.getInstance();
         return deadline;
     }
 
@@ -83,6 +88,7 @@ public class Task {
     }
 
     public Calendar getCreatedAt() {
+        createdAt = Calendar.getInstance();
         return createdAt;
     }
 
@@ -91,6 +97,7 @@ public class Task {
     }
 
     public Calendar getUpdatedAt() {
+        updatedAt = Calendar.getInstance();
         return updatedAt;
     }
 
