@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Jun-2022 às 18:30
+-- Tempo de geração: 10-Jun-2022 às 21:53
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -32,7 +32,7 @@ CREATE TABLE `projects` (
   `name` varchar(50) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL
+  `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,7 +78,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT de tabela `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tasks`

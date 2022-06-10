@@ -18,6 +18,10 @@ public class Project {
         this.updatedAt = updatedAt;
     }
 
+    public Project() {
+        
+    }
+
     public int getId() {
         return id;
     }
@@ -43,6 +47,7 @@ public class Project {
     }
 
     public Calendar getCreatedAt() {
+        createdAt = Calendar.getInstance();
         return createdAt;
     }
 
@@ -51,6 +56,7 @@ public class Project {
     }
 
     public Calendar getUpdatedAt() {
+        updatedAt = Calendar.getInstance();
         return updatedAt;
     }
 
