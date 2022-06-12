@@ -39,3 +39,9 @@ Tecnologias utilizadas:
 
 * Java
 * MySql
+
+## <i>Preview da Tela Principal</i>
+![image](https://user-images.githubusercontent.com/86898523/173256363-9600d6ac-71cd-4a18-a38e-83bd4de59675.png)
+
+## <i>Preview da Tela de Adicionar Projetos</i>
+![image](https://user-images.githubusercontent.com/86898523/173256505-cceebcb5-733e-49d9-9427-f8c70a5f7a6e.png)
