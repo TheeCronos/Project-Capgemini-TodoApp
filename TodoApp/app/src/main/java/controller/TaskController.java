@@ -14,13 +14,13 @@ public class TaskController {
 
     public void save(Task task) throws SQLException {
 
-        String sql = "INSERT INTO tasks (idProject "
-                + "name, "
-                + "description, "
-                + "completed, "
-                + "notes, "
-                + "deadline, "
-                + "createdAt, "
+        String sql = "INSERT INTO tasks (idProject,"
+                + "name,"
+                + "description,"
+                + "completed,"
+                + "notes,"
+                + "deadline,"
+                + "createdAt,"
                 + "updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection connection = null;

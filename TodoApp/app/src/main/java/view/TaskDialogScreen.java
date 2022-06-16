@@ -5,8 +5,14 @@
 package view;
 
 import controller.TaskController;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Project;
 import model.Task;
@@ -15,12 +21,13 @@ import model.Task;
  *
  * @author Servidor
  */
-public class TaskDialogScreen extends javax.swing.JFrame {
+public class TaskDialogScreen extends javax.swing.JDialog {
 
     TaskController controller;
     Project project;
     
-    public TaskDialogScreen() {
+    public TaskDialogScreen(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         
         controller = new TaskController();
@@ -36,8 +43,8 @@ public class TaskDialogScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelToolBar = new javax.swing.JPanel();
-        jLabelToolBarTitle = new javax.swing.JLabel();
         jLabelToolBarSave = new javax.swing.JLabel();
+        jLabelToolBarTitlee = new javax.swing.JLabel();
         jPanelTask = new javax.swing.JPanel();
         jLabelName = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
@@ -50,23 +57,21 @@ public class TaskDialogScreen extends javax.swing.JFrame {
         jLabelDeadline = new javax.swing.JLabel();
         jFormattedTextFieldDeadline = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanelToolBar.setBackground(new java.awt.Color(35, 50, 55));
         jPanelToolBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 18, 30)));
         jPanelToolBar.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jLabelToolBarTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check.png"))); // NOI18N
-        jLabelToolBarTitle.setPreferredSize(new java.awt.Dimension(35, 35));
-        jLabelToolBarTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelToolBarSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check.png"))); // NOI18N
+        jLabelToolBarSave.setPreferredSize(new java.awt.Dimension(35, 35));
+        jLabelToolBarSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelToolBarTitleMouseClicked(evt);
+                jLabelToolBarSaveMouseClicked(evt);
             }
         });
 
-        jLabelToolBarSave.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelToolBarSave.setForeground(new java.awt.Color(191, 216, 210));
-        jLabelToolBarSave.setText("Tarefa");
+        jLabelToolBarTitlee.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelToolBarTitlee.setForeground(new java.awt.Color(191, 216, 210));
+        jLabelToolBarTitlee.setText("Tarefa");
 
         javax.swing.GroupLayout jPanelToolBarLayout = new javax.swing.GroupLayout(jPanelToolBar);
         jPanelToolBar.setLayout(jPanelToolBarLayout);
@@ -74,9 +79,9 @@ public class TaskDialogScreen extends javax.swing.JFrame {
             jPanelToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelToolBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelToolBarTitlee, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelToolBarLayout.setVerticalGroup(
@@ -86,8 +91,8 @@ public class TaskDialogScreen extends javax.swing.JFrame {
                 .addGroup(jPanelToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelToolBarLayout.createSequentialGroup()
                         .addGap(0, 11, Short.MAX_VALUE)
-                        .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelToolBarTitlee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -197,13 +202,13 @@ public class TaskDialogScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelToolBarTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarTitleMouseClicked
+    private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         // TODO add your handling code here:
         
         try {
             Task task = new Task();
             
-            task.setIdProject(project.getId());
+            task.setIdProject(2);
             
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
@@ -211,18 +216,24 @@ public class TaskDialogScreen extends javax.swing.JFrame {
             task.setIsCompleted(false);
             
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Calendar deadline = null;
+            Date data = dateFormat.parse(jFormattedTextFieldDeadline.getText());
             
-            deadline = dateFormat.parse(jFormattedTextFieldDeadline.getText());
-            task.setDeadline(deadline);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(data.getTime());
+            
+            task.setDeadline(calendar);
             controller.save(task);
             
             JOptionPane.showMessageDialog(rootPane, "Tarefa salvo com sucesso.");
-        } catch (Exception e){
+        } catch (HeadlessException e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-    }//GEN-LAST:event_jLabelToolBarTitleMouseClicked
+    }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -235,7 +246,7 @@ public class TaskDialogScreen extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -254,7 +265,14 @@ public class TaskDialogScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaskDialogScreen().setVisible(true);
+                TaskDialogScreen dialog = new TaskDialogScreen(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -266,7 +284,7 @@ public class TaskDialogScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescription;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelToolBarSave;
-    private javax.swing.JLabel jLabelToolBarTitle;
+    private javax.swing.JLabel jLabelToolBarTitlee;
     private javax.swing.JPanel jPanelTask;
     private javax.swing.JPanel jPanelToolBar;
     private javax.swing.JScrollPane jScrollPaneDescription;
