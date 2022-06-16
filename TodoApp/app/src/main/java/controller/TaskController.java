@@ -168,6 +168,8 @@ public class TaskController {
                 java.sql.Date updatedAt = resultSet.getDate("updatedAt");
                 data.setTime(new java.util.Date(updatedAt.getTime()));
                 task.setUpdatedAt(data);
+                
+                tasks.add(task);
             }
 
         } catch (SQLException ex) {

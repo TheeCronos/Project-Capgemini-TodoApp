@@ -137,7 +137,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jFormattedTextFieldDeadline.setBackground(new java.awt.Color(191, 216, 210));
         jFormattedTextFieldDeadline.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 18, 30)));
         jFormattedTextFieldDeadline.setForeground(new java.awt.Color(35, 50, 55));
-        jFormattedTextFieldDeadline.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldDeadline.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         javax.swing.GroupLayout jPanelTaskLayout = new javax.swing.GroupLayout(jPanelTask);
         jPanelTask.setLayout(jPanelTaskLayout);
@@ -208,7 +208,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         try {
             Task task = new Task();
             
-            task.setIdProject(2);
+            task.setIdProject(3);
             
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
