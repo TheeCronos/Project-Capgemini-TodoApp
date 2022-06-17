@@ -39,7 +39,7 @@ public class TaskController {
             statement.setString(3, task.getDescription());
             statement.setBoolean(4, task.isIsCompleted());
             statement.setString(5, task.getNotes());
-            statement.setDate(6, new java.sql.Date(task.getDeadline().getTimeInMillis()));
+            statement.setDate(6, new java.sql.Date(task.getDeadline().getTime()));
             statement.setDate(7, new java.sql.Date(task.getCreatedAt().getTimeInMillis()));
             statement.setDate(8, new java.sql.Date(task.getUpdatedAt().getTimeInMillis()));
 
@@ -81,7 +81,7 @@ public class TaskController {
             statement.setString(3, task.getDescription());
             statement.setString(4, task.getNotes());
             statement.setBoolean(5, task.isIsCompleted());
-            statement.setDate(6, new java.sql.Date(task.getDeadline().getTimeInMillis()));
+            statement.setDate(6, new java.sql.Date(task.getDeadline().getTime()));
             statement.setDate(7, new java.sql.Date(task.getCreatedAt().getTimeInMillis()));
             statement.setDate(8, new java.sql.Date(task.getUpdatedAt().getTimeInMillis()));
             statement.setInt(9, task.getId());
@@ -157,9 +157,9 @@ public class TaskController {
 
                 //Config Calendar
                 Calendar data = Calendar.getInstance();
-                java.sql.Date deadline = resultSet.getDate("deadline");
-                data.setTime(new java.util.Date(deadline.getTime()));
-                task.setDeadline(data);
+//                java.sql.Date deadline = resultSet.getDate("deadline");
+//                data.setTime(new java.util.Date(deadline.getTime()));
+                task.setDeadline(resultSet.getDate("deadline"));
 
                 java.sql.Date createdAt = resultSet.getDate("createdAt");
                 data.setTime(new java.util.Date(createdAt.getTime()));

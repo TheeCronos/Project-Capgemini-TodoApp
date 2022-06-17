@@ -9,7 +9,6 @@ import java.awt.HeadlessException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -217,11 +216,8 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date data = dateFormat.parse(jFormattedTextFieldDeadline.getText());
-            
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(data.getTime());
-            
-            task.setDeadline(calendar);
+         
+            task.setDeadline(data);
             controller.save(task);
             
             JOptionPane.showMessageDialog(rootPane, "Tarefa salvo com sucesso.");

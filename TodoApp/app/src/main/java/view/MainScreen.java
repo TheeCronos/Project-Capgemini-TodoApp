@@ -278,6 +278,7 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setRowHeight(40);
         jTableTasks.setSelectionBackground(new java.awt.Color(0, 51, 51));
         jTableTasks.setSelectionForeground(new java.awt.Color(191, 216, 210));
+        jTableTasks.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTasks.setShowHorizontalLines(true);
         jTableTasks.setShowVerticalLines(true);
         jScrollPane1.setViewportView(jTableTasks);

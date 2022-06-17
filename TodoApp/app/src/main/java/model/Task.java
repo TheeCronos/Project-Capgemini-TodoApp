@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Task {
 
@@ -10,11 +11,11 @@ public class Task {
     private String description;
     private String notes;
     private boolean isCompleted;
-    private Calendar deadline;
+    private Date deadline;
     private Calendar createdAt;
     private Calendar updatedAt;
 
-    public Task(int id, int idProject, String name, String description, String notes, boolean isCompleted, Calendar deadline, Calendar createdAt, Calendar updatedAt) {
+    public Task(int id, int idProject, String name, String description, String notes, boolean isCompleted, Date deadline, Calendar createdAt, Calendar updatedAt) {
         this.id = id;
         this.idProject = idProject;
         this.name = name;
@@ -78,12 +79,11 @@ public class Task {
         this.isCompleted = isCompleted;
     }
 
-    public Calendar getDeadline() {
-        deadline = Calendar.getInstance();
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Calendar deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
