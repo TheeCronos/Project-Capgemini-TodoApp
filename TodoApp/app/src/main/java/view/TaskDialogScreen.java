@@ -205,22 +205,28 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         try {
-            Task task = new Task();
+            if (!jTextFieldName.getText().isEmpty()&&(!jFormattedTextFieldDeadline.getText().isEmpty())) {
+                Task task = new Task();
             
-            task.setIdProject(project.getId());
-            
-            task.setName(jTextFieldName.getText());
-            task.setDescription(jTextAreaDescription.getText());
-            task.setNotes(jTextAreaNotes.getText());
-            task.setIsCompleted(false);
-            
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date data = dateFormat.parse(jFormattedTextFieldDeadline.getText());
-         
-            task.setDeadline(data);
-            controller.save(task);
-            
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salvo com sucesso.");
+                task.setIdProject(project.getId());
+
+                task.setName(jTextFieldName.getText());
+                task.setDescription(jTextAreaDescription.getText());
+                task.setNotes(jTextAreaNotes.getText());
+                task.setIsCompleted(false);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = dateFormat.parse(jFormattedTextFieldDeadline.getText());
+
+                task.setDeadline(data);
+                controller.save(task);
+
+                JOptionPane.showMessageDialog(rootPane, "Tarefa salvo com sucesso!");
+                
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A tarefa não foi salva, campo *Nome* e *Prazo* são obrigatórios! ");
+            }
         } catch (HeadlessException e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         } catch (SQLException ex) {
@@ -228,7 +234,6 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.dispose();
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**

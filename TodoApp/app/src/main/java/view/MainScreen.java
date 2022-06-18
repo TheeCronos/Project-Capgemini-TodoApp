@@ -111,7 +111,6 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPaneTasks.setViewportView(jTableTasks);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(24, 18, 30));
         setMinimumSize(new java.awt.Dimension(1000, 800));
 
         jPanelToolBar.setBackground(new java.awt.Color(35, 50, 55));
