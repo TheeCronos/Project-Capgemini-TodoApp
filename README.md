@@ -40,6 +40,9 @@ Tecnologias utilizadas:
 * Java
 * MySql
 
+## <i>Tela Final com Projetos e Tarefas</i>
+![image](https://user-images.githubusercontent.com/86898523/174441702-e84daac5-22d5-4910-8e0a-bf76a736b1fa.png)
+
 ## <i>Tela Inicial sem Tarefas</i>
 ![image](https://user-images.githubusercontent.com/86898523/173256363-9600d6ac-71cd-4a18-a38e-83bd4de59675.png)
 
