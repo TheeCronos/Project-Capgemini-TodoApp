@@ -94,7 +94,7 @@ public class TaskController {
         }
     }
 
-    public void removeById(int taskId) throws SQLException {
+    public void removeById(int taskId) {
 
         String sql = "DELETE FROM tasks WHERE id = ?";
 
@@ -154,12 +154,10 @@ public class TaskController {
                 task.setDescription(resultSet.getString("description"));
                 task.setNotes(resultSet.getString("notes"));
                 task.setIsCompleted(resultSet.getBoolean("completed"));
-
+                task.setDeadline(resultSet.getDate("deadline"));
+                
                 //Config Calendar
                 Calendar data = Calendar.getInstance();
-//                java.sql.Date deadline = resultSet.getDate("deadline");
-//                data.setTime(new java.util.Date(deadline.getTime()));
-                task.setDeadline(resultSet.getDate("deadline"));
 
                 java.sql.Date createdAt = resultSet.getDate("createdAt");
                 data.setTime(new java.util.Date(createdAt.getTime()));
