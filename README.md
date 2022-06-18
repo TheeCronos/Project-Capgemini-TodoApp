@@ -44,7 +44,7 @@ Tecnologias utilizadas:
 ![image](https://user-images.githubusercontent.com/86898523/174441702-e84daac5-22d5-4910-8e0a-bf76a736b1fa.png)
 
 ## <i>Tela Inicial sem Tarefas</i>
-![image](https://user-images.githubusercontent.com/86898523/173256363-9600d6ac-71cd-4a18-a38e-83bd4de59675.png)
+![image](https://user-images.githubusercontent.com/86898523/174443221-9f7c717c-cba8-4ac4-8554-0eb1ef1cc839.png)
 
 ## <i>Tela de Adicionar Projetos</i>
 ![image](https://user-images.githubusercontent.com/86898523/173421105-8aa17be9-7304-49fb-b75c-5f39747f93d7.png)
