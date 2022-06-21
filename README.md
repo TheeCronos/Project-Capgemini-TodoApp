@@ -51,3 +51,27 @@ Tecnologias utilizadas:
 
 ## <i>Tela de Adicionar Tarefas</i>
 ![image](https://user-images.githubusercontent.com/86898523/173421646-9f11c3f7-9a69-446c-b9f4-0b1c823655f7.png)
+
+Progresso do desenvolvimento:
+
+* Criação do banco de dados; (OK)
+* Criação da classe modelo; (OK)
+* Criação da conexão com o banco de dados; (OK)
+* Criação da interface gráfica; (OK)
+	- Criação da tela inicial; (OK)
+		- Criação da célula de prazo; (OK)
+		- Criação da célula de editar/excluir; (OK)
+	- Criação da tela de cadastro do projeto; (OK)
+	- Criação da tela de cadastro de tarefas; (OK)
+* Implementação de eventos; (OK)
+	-  Validação; (OK)
+* Configurações finais; (OK)
+* Teste de aplicação; (OK)
+
+Próximos desafios:
+
+* Implementar o conceito de Tags para que se possa atribuir Tags à Tarefa;
+* Implementar o conceito de Conta e Usuário. Para que mais usuários possam utilizar a aplicação;
+* Construção de uma tela de Login (feita após a criação dos conceitos de conta e usuário). Para que usuários possam informar Login e senha;
+* Corrigir o campo "Excluir" que deleta a tarefa ao clicar em qualquer lugar da célula, e não do ícone de exclusão;
+* Permitir que o usuário altere as informações de uma Tarefa já criada;
